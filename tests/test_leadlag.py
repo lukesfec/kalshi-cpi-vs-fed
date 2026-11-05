@@ -50,6 +50,6 @@ def test_changes_and_lags_never_cross_releases():
 
 def test_implied_mean_changes_require_same_strike_set():
     f = _frame(["2026-07-01", "2026-07-02"], [0.1, 0.1], [0.1, 0.3])
-    f.loc[1, "strike_set"] = (0.1, 0.2, 0.3)
+    f.at[1, "strike_set"] = (0.1, 0.2, 0.3)
     d = add_changes(f, "k_mean")
     assert np.isnan(d.dK.iloc[1])
